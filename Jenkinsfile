@@ -4,7 +4,7 @@ stage('MyStep') {
         script {
 
             env.NUMBER.split(',').each {
-               build job: 'Master_Child', parameters: [string(name: 'NUMBER', value: "$it")], wait: false
+               build job: 'jenkinsfile-demo', parameters: [string(name: 'NUMBER', value: "$it")], wait: false
             }
         }
     }
