@@ -1,19 +1,21 @@
 pipeline {
+    agent any
+
     stages {
-       stage('MyStage') {
-          steps {
-             echo 'Deploying MyStep'
-                script {
-                   def numbers = [:]
-                   env.NUMBER.split(',').each {
-                      numbers["numbers${it}"] = {
-                         build job: 'jenkinsfile-demo', parameters: [string(name: 'NUMBER', value: "$it")]
-                    }
-                }                   
-                parallel numbers
+        stage('Build') {
+            steps {
+                echo 'Building..'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
             }
         }
     }
-  }
 }
-        
